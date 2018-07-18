@@ -71,6 +71,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 

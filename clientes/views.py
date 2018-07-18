@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 
 from .models import Person
-# Create your views here.
+
 
 @login_required
 def list_all(request):
