@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import os
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,17 +83,19 @@ WSGI_APPLICATION = 'gestao_clientes.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+#default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+#DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
 
-DATABASES = {
-    'default':{
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gestao_clientes',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default':{
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'gestao_clientes',
+#         'USER': 'postgres',
+#         'PASSWORD': 'root',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -130,6 +133,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+from dj_database_url import parse as dburl
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
 
 STATIC_URL = '/static/'
 
