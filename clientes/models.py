@@ -18,3 +18,21 @@ class Person(models.Model):
 
     def __str__(self):
         return self.firstName;
+
+class Produto(models.Model):
+    description = models.CharField(max_length = 27, default= None);
+    price = models.DecimalField(max_digits=7, decimal_places = 2);
+    def __str__(self):
+        return str(self.description);
+
+
+class Venda(models.Model):
+    number = models.DecimalField(max_digits = 10, decimal_places = 1)
+    price = models.DecimalField(max_digits = 10, decimal_places = 2)
+    descont = models.DecimalField(max_digits = 10, decimal_places = 2)
+    tax = models.DecimalField(max_digits = 10, decimal_places = 2)
+    person = models.ForeignKey(Person, null = True, blank = True, on_delete = models.PROTECT);
+    produtos = models.ManyToManyField(Produto, blank = True)
+    def __str__(self):
+        return str(self.number);
+
