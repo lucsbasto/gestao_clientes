@@ -21,7 +21,7 @@ from .views import person_update
 from .views import person_delete
 
 urlpatterns = [
-    path('', list_all, name='list_all'),
+    path('all', list_all, name='list_all'),
     path('new/', person_new, name='person_new'),
     path('update/<int:id>', person_update, name='person_update'),
     path('delete/<int:id>', person_delete, name='person_delete')
